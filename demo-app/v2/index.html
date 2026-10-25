@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DemoBank - Sign in (v2, redesigned)</title>
+<!-- v2 simulates a front-end redesign: every id below was renamed, so the tests' primary locators break.
+     Accessible names, placeholders, field names and visible text stayed the same. -->
+<style>
+  body { font-family: Arial, sans-serif; background: #101828; display: flex; justify-content: center; padding-top: 60px; }
+  .panel { background: #fff; padding: 32px; border-radius: 12px; width: 340px; }
+  .field { width: 100%; padding: 12px; margin: 8px 0; box-sizing: border-box; border: 1px solid #ccd; border-radius: 6px; }
+  .cta { width: 100%; padding: 12px; background: #12b76a; color: #fff; border: 0; border-radius: 6px; cursor: pointer; }
+  .alert { color: #c62828; }
+  .is-hidden { display: none; }
+</style>
+</head>
+<body>
+<main class="panel">
+  <section id="auth-section">
+    <h1>DemoBank</h1>
+    <form id="frm-auth-2024" onsubmit="return signIn(event)">
+      <input id="txt-user-8812" class="field" name="username" type="text" placeholder="Username" aria-label="Username">
+      <input id="txt-pass-8813" class="field" name="password" type="password" placeholder="Password" aria-label="Password">
+      <button id="btn-signin-7f3a" class="cta" type="submit" aria-label="Log in">Log in</button>
+    </form>
+    <p id="auth-error" class="alert is-hidden" role="alert"></p>
+  </section>
+  <section id="home-section" class="is-hidden">
+    <h2 id="greeting-title" data-role="welcome">Welcome, demo_user</h2>
+    <p>Balance: <span id="acct-balance">25,000.00</span></p>
+  </section>
+</main>
+<script>
+  function signIn(e) {
+    e.preventDefault();
+    var u = document.getElementById('txt-user-8812').value;
+    var p = document.getElementById('txt-pass-8813').value;
+    if (u === 'demo_user' && p === 'secret123') {
+      document.getElementById('auth-section').classList.add('is-hidden');
+      document.getElementById('home-section').classList.remove('is-hidden');
+    } else {
+      var err = document.getElementById('auth-error');
+      err.textContent = 'Invalid username or password';
+      err.classList.remove('is-hidden');
+    }
+    return false;
+  }
+</script>
+</body>
+</html>

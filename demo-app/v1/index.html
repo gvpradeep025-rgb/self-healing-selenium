@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DemoBank - Sign in (v1)</title>
+<style>
+  body { font-family: Arial, sans-serif; background: #f2f4f8; display: flex; justify-content: center; padding-top: 60px; }
+  .card { background: #fff; padding: 28px; border-radius: 8px; width: 320px; box-shadow: 0 2px 8px rgba(0,0,0,.1); }
+  input, button { width: 100%; padding: 10px; margin: 8px 0; box-sizing: border-box; }
+  button { background: #2557d6; color: #fff; border: 0; border-radius: 4px; cursor: pointer; }
+  .error { color: #c62828; }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div id="login-view">
+    <h1>DemoBank</h1>
+    <form id="login-form" onsubmit="return login(event)">
+      <input id="username" name="username" type="text" placeholder="Username" aria-label="Username">
+      <input id="password" name="password" type="password" placeholder="Password" aria-label="Password">
+      <button id="login-button" class="btn primary" type="submit" aria-label="Log in">Log in</button>
+    </form>
+    <p id="error-message" class="error hidden" role="alert"></p>
+  </div>
+  <div id="dashboard-view" class="hidden">
+    <h2 id="welcome-message" data-role="welcome">Welcome, demo_user</h2>
+    <p>Balance: <span id="balance">25,000.00</span></p>
+  </div>
+</div>
+<script>
+  function login(e) {
+    e.preventDefault();
+    var u = document.getElementById('username').value;
+    var p = document.getElementById('password').value;
+    if (u === 'demo_user' && p === 'secret123') {
+      document.getElementById('login-view').classList.add('hidden');
+      document.getElementById('dashboard-view').classList.remove('hidden');
+    } else {
+      var err = document.getElementById('error-message');
+      err.textContent = 'Invalid username or password';
+      err.classList.remove('hidden');
+    }
+    return false;
+  }
+</script>
+</body>
+</html>

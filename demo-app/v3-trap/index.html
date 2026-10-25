@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DemoBank - Trap page (v3)</title>
+<!-- v3 is a safety trap: the Log in button is gone. A "Delete account" button now reuses the old id "login-button"
+     and is the only submit button in the form.
+     A naive self-healing tool would click it. This framework must refuse. -->
+<style>
+  body { font-family: Arial, sans-serif; padding: 40px; }
+  .danger { background: #c62828; color: #fff; padding: 10px; border: 0; }
+</style>
+</head>
+<body>
+<h1>DemoBank</h1>
+<form id="settings-form" onsubmit="return deleteAccount(event)">
+  <input id="u-91" name="username" type="text" placeholder="Username" aria-label="Username">
+  <input id="p-92" name="password" type="password" placeholder="Password" aria-label="Password">
+  <button id="login-button" class="danger" type="submit" aria-label="Delete account">Delete account</button>
+</form>
+<p id="status"></p>
+<script>
+  window.accountDeleted = false;
+  function deleteAccount(e) {
+    e.preventDefault();
+    window.accountDeleted = true;
+    document.getElementById('status').textContent = 'Account deleted';
+    return false;
+  }
+</script>
+</body>
+</html>

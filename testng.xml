@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Self-Healing Selenium Suite">
+    <listeners>
+        <listener class-name="com.pradeep.healing.report.HealingReportListener"/>
+    </listeners>
+    <test name="Unit - similarity scoring">
+        <classes>
+            <class name="com.pradeep.healing.unit.SimilarityScorerTest"/>
+        </classes>
+    </test>
+    <test name="UI - healing behaviour">
+        <classes>
+            <class name="com.pradeep.healing.tests.BaselineV1Test"/>
+            <class name="com.pradeep.healing.tests.HealingV2Test"/>
+            <class name="com.pradeep.healing.tests.SafetyTrapTest"/>
+            <class name="com.pradeep.healing.tests.AmbiguityTest"/>
+        </classes>
+    </test>
+</suite>

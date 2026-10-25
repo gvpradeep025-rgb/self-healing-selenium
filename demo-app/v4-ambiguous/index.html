@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DemoBank - Ambiguous page (v4)</title>
+<!-- v4 has two buttons that both look exactly like "Log in" (personal and business).
+     Picking one would be a guess, so the framework must stop and report AMBIGUOUS. -->
+<style> body { font-family: Arial, sans-serif; padding: 40px; } </style>
+</head>
+<body>
+<h1>DemoBank</h1>
+<form onsubmit="return false">
+  <input id="a1" name="username" type="text" placeholder="Username" aria-label="Username">
+  <input id="a2" name="password" type="password" placeholder="Password" aria-label="Password">
+  <button id="personal-login" type="submit" aria-label="Log in">Log in</button>
+  <button id="business-login" type="submit" aria-label="Log in">Log in</button>
+</form>
+</body>
+</html>
